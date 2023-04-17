@@ -11,9 +11,9 @@ public interface UserService {
 	
 	List<User> fetchAllUsers();
 	
-	User getUserById(Integer id);
+	User getUserById(Long id);
 	
-	User updateUserById(Integer id,User user);
+	User updateUserById(Long id,User user);
 	
-	void deleteUserById(Integer id);
+	void deleteUserById(Long id);
 }

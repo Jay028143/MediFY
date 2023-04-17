@@ -31,24 +31,25 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    public User getUser(@PathVariable Integer userId) {
+    public User getUser(@PathVariable Long userId) {
         return userService.getUserById(userId);
     }
 
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
+    	System.err.println(user);
         User savedUser = userService.saveUser(user);
         return ResponseEntity.ok(savedUser);
     }
 
     @PutMapping("/{userId}")
-    public ResponseEntity<User> updateUser(@PathVariable Integer userId, @RequestBody User user) {
+    public ResponseEntity<User> updateUser(@PathVariable Long userId, @RequestBody User user) {
         User currentUser = userService.updateUserById(null, user);
         return ResponseEntity.ok(currentUser);
     }
 
     @DeleteMapping("/{userId}")
-    public ResponseEntity<User> deleteUser(@PathVariable Integer userId) {
+    public ResponseEntity<User> deleteUser(@PathVariable Long userId) {
         userService.deleteUserById(userId);
         return ResponseEntity.ok().build();
     }
