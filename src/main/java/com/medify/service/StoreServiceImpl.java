@@ -26,7 +26,7 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
-	public Store getStoreById(Integer id) {
+	public Store getStoreById(Long id) {
 		Optional<Store> store=storeRepository.findById(id);
 		if(store.isPresent())
 		{
@@ -36,12 +36,12 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
-	public Store updateStoreById(Integer id, Store store) {
+	public Store updateStoreById(Long id, Store store) {
 		return storeRepository.save(store);
 	}
 
 	@Override
-	public void deleteStoreById(Integer id) {
+	public void deleteStoreById(Long id) {
 		 storeRepository.deleteById(id);
 	}
 

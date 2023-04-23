@@ -26,7 +26,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public Order getOrderById(Integer id) {
+	public Order getOrderById(Long id) {
 		Optional<Order> order=orderRepository.findById(id);
 		if(order.isPresent())
 		{
@@ -36,12 +36,12 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public Order updateOrderById(Integer id, Order order) {
+	public Order updateOrderById(Long id, Order order) {
 		return orderRepository.save(order);
 	}
 
 	@Override
-	public void deleteOrderById(Integer id) {
+	public void deleteOrderById(Long id) {
 		 orderRepository.deleteById(id);
 	}
 

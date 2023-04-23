@@ -25,7 +25,7 @@ import com.medify.entity.ERole;
 import com.medify.entity.Role;
 import com.medify.entity.User;
 import com.medify.security.login.payload.request.LoginRequest;
-import com.medify.security.login.payload.request.SignupRequest;
+import com.medify.security.login.payload.request.RegisterRequest;
 import com.medify.security.login.payload.response.UserInfoResponse;
 import com.medify.security.login.payload.response.MessageResponse;
 import com.medify.repository.RoleRepository;
@@ -35,7 +35,8 @@ import com.medify.service.UserDetailsImpl;
 
 import javax.validation.Valid;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+
+@CrossOrigin(origins="http://localhost:3000/")
 @RestController
 public class AuthController {
   @Autowired
@@ -53,7 +54,7 @@ public class AuthController {
   @Autowired
   JwtUtils jwtUtils;
 
-  @PostMapping("/signin")
+  @PostMapping("/login")
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
     Authentication authentication = authenticationManager
@@ -69,32 +70,29 @@ public class AuthController {
         .map(item -> item.getAuthority())
         .collect(Collectors.toList());
 
-    return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
-        .body(new UserInfoResponse(userDetails.getId(),
-                                   userDetails.getUsername(),
-                                   userDetails.getEmail(),
-                                   roles));
-  }
+	return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString()).body(new UserInfoResponse(
+			userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), roles, userDetails.getStoreId()));
+}
 
-  @PostMapping("/signup")
-  public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-    if (userRepository.existsByUserName(signUpRequest.getUsername())) {
+  @PostMapping("/register")
+  public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterRequest registerRequest) {
+    if (userRepository.existsByUserName(registerRequest.getUsername())) {
       return ResponseEntity.badRequest().body(new MessageResponse("Error: Username is already taken!"));
     }
 
-    if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+    if (userRepository.existsByEmail(registerRequest.getEmail())) {
       return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
     }
 
     
-    User user = new User(signUpRequest.getUsername(),
-            encoder.encode(signUpRequest.getPassword()), signUpRequest.getFirstName(), 
-            signUpRequest.getLastName(), signUpRequest.getStoreId(), signUpRequest.getEmail(), signUpRequest.getMobileNumber(),
-            signUpRequest.getAddress(), signUpRequest.getCity(), signUpRequest.getState(), signUpRequest.getPostCode(), signUpRequest.getCreatedAt()
-            ,signUpRequest.getUpdatedAt());
+    User user = new User(registerRequest.getUsername(),
+            encoder.encode(registerRequest.getPassword()), registerRequest.getFirstName(), 
+            registerRequest.getLastName(), registerRequest.getStoreId(), registerRequest.getEmail(),registerRequest.getNiNumber(), registerRequest.getMobileNumber(),
+            registerRequest.getAddress(), registerRequest.getPostCode(), registerRequest.getCreatedAt()
+            ,registerRequest.getUpdatedAt(),registerRequest.getDateOfBirth(),registerRequest.getDateOfJoining());
     
 
-    Set<String> strRoles = signUpRequest.getRole();
+    Set<String> strRoles = registerRequest.getRole();
     Set<Role> roles = new HashSet<>();
 
     if (strRoles == null) {
@@ -130,7 +128,7 @@ public class AuthController {
     return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
   }
 
-  @PostMapping("/signout")
+  @PostMapping("/logout")
   public ResponseEntity<?> logoutUser() {
     ResponseCookie cookie = jwtUtils.getCleanJwtCookie();
     return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, cookie.toString())

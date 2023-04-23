@@ -31,7 +31,7 @@ public class StoreController {
     }
 
     @GetMapping("/{storeId}")
-    public Store getStore(@PathVariable Integer storeId) {
+    public Store getStore(@PathVariable Long storeId) {
         return storeService.getStoreById(storeId);
     }
 
@@ -42,13 +42,13 @@ public class StoreController {
     }
 
     @PutMapping("/{storeId}")
-    public ResponseEntity<Store> updateStore(@PathVariable Integer storeId, @RequestBody Store store) {
+    public ResponseEntity<Store> updateStore(@PathVariable Long storeId, @RequestBody Store store) {
         Store currentStore = storeService.updateStoreById(null, store);
         return ResponseEntity.ok(currentStore);
     }
 
     @DeleteMapping("/{storeId}")
-    public ResponseEntity<Store> deleteStore(@PathVariable Integer storeId) {
+    public ResponseEntity<Store> deleteStore(@PathVariable Long storeId) {
         storeService.deleteStoreById(storeId);
         return ResponseEntity.ok().build();
     }

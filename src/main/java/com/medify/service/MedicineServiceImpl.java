@@ -6,28 +6,28 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.medify.entity.Product;
-import com.medify.repository.ProductRepository;
+import com.medify.entity.Medicine;
+import com.medify.repository.MedicineRepository;
 
 @Service
-public class ProductServiceImpl implements ProductService {
+public class MedicineServiceImpl implements MedicineService {
 
 	@Autowired
-	private ProductRepository productRepository;
+	private MedicineRepository productRepository;
 	
 	@Override
-	public Product saveProduct(Product product) {
+	public Medicine saveMedicine(Medicine product) {
 		return productRepository.save(product);
 	}
 
 	@Override
-	public List<Product> fetchAllProducts() {	
+	public List<Medicine> fetchAllMedicines() {	
 		return productRepository.findAll();
 	}
 
 	@Override
-	public Product getProductById(Integer id) {
-		Optional<Product> product=productRepository.findById(id);
+	public Medicine getMedicineById(Long id) {
+		Optional<Medicine> product=productRepository.findById(id);
 		if(product.isPresent())
 		{
 			return product.get();
@@ -36,12 +36,12 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product updateProductById(Integer id, Product product) {
+	public Medicine updateMedicineById(Long id, Medicine product) {
 		return productRepository.save(product);
 	}
 
 	@Override
-	public void deleteProductById(Integer id) {
+	public void deleteMedicineById(Long id) {
 		 productRepository.deleteById(id);
 	}
 

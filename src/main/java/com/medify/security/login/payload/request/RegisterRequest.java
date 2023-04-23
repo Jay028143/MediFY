@@ -7,7 +7,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-public class SignupRequest {
+public class RegisterRequest {
 	@NotBlank
 	@Size(min = 3, max = 20)
 	private String username;
@@ -33,16 +33,17 @@ public class SignupRequest {
 
 	private String address;
 
-	private String city;
-
-	private String state;
+	private String niNumber;
 
 	private String postCode;
+
+	private Date dateOfBirth;
+
+	private Date dateOfJoining;
 
 	private Date createdAt;
 
 	private Date updatedAt;
-	
 
 	public String getEmail() {
 		return email;
@@ -108,20 +109,28 @@ public class SignupRequest {
 		this.address = address;
 	}
 
-	public String getCity() {
-		return city;
+	public String getNiNumber() {
+		return niNumber;
 	}
 
-	public void setCity(String city) {
-		this.city = city;
+	public void setNiNumber(String niNumber) {
+		this.niNumber = niNumber;
 	}
 
-	public String getState() {
-		return state;
+	public Date getDateOfBirth() {
+		return dateOfBirth;
 	}
 
-	public void setState(String state) {
-		this.state = state;
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public Date getDateOfJoining() {
+		return dateOfJoining;
+	}
+
+	public void setDateOfJoining(Date dateOfJoining) {
+		this.dateOfJoining = dateOfJoining;
 	}
 
 	public String getPostCode() {

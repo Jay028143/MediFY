@@ -94,22 +94,6 @@ public class User {
 		this.address = address;
 	}
 
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
 	public String getPostCode() {
 		return postCode;
 	}
@@ -142,8 +126,8 @@ public class User {
 
 	public User( @NotBlank @Size(max = 20) String userName, @NotBlank @Size(max = 120) String password,
 			String firstName, String lastName, String storeId,
-			@NotBlank @Size(max = 50) @Email String email, String mobileNumber, String address, String city,
-			String state, String postCode, Date createdAt, Date updatedAt) {
+			@NotBlank @Size(max = 50) @Email String email,String niNumber, String mobileNumber, String address
+			, String postCode,Date createdAt, Date updatedAt, Date dateOfBirth, Date dateOfJoining) {
 		super();
 		this.userName = userName;
 		this.password = password;
@@ -151,13 +135,38 @@ public class User {
 		this.lastName = lastName;
 		this.storeId = storeId;
 		this.email = email;
+		this.niNumber=niNumber;
 		this.mobileNumber = mobileNumber;
 		this.address = address;
-		this.city = city;
-		this.state = state;
+		this.dateOfBirth=dateOfBirth;
+		this.dateOfJoining=dateOfJoining;
 		this.postCode = postCode;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
+	}
+
+	public String getNiNumber() {
+		return niNumber;
+	}
+
+	public void setNiNumber(String niNumber) {
+		this.niNumber = niNumber;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public Date getDateOfJoining() {
+		return dateOfJoining;
+	}
+
+	public void setDateOfJoining(Date dateOfJoining) {
+		this.dateOfJoining = dateOfJoining;
 	}
 
 	@Id
@@ -197,6 +206,9 @@ public class User {
 	@Size(max = 50)
 	@Email
 	private String email;
+	
+	@Column(name = "ni_number")
+	private String niNumber;
 
 	@Column(name = "mobile_number")
 	private String mobileNumber;
@@ -204,14 +216,14 @@ public class User {
 	@Column(name = "address")
 	private String address;
 
-	@Column(name = "city")
-	private String city;
-
-	@Column(name = "state")
-	private String state;
-
 	@Column(name = "postCode")
 	private String postCode;
+	
+	@Column(name = "date_of_birth")
+	private Date dateOfBirth;
+	
+	@Column(name = "date_of_joining")
+	private Date dateOfJoining;
 
 	@Column(name = "created_at")
 	private Date createdAt;

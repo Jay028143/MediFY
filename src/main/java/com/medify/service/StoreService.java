@@ -11,9 +11,9 @@ public interface StoreService {
 	
 	List<Store> fetchAllStores();
 	
-	Store getStoreById(Integer id);
+	Store getStoreById(Long id);
 	
-	Store updateStoreById(Integer id,Store store);
+	Store updateStoreById(Long id,Store store);
 	
-	void deleteStoreById(Integer id);
+	void deleteStoreById(Long id);
 }

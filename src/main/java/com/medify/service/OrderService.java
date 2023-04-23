@@ -11,9 +11,9 @@ public interface OrderService {
 	
 	List<Order> fetchAllOrders();
 	
-	Order getOrderById(Integer id);
+	Order getOrderById(Long id);
 	
-	Order updateOrderById(Integer id,Order order);
+	Order updateOrderById(Long id,Order order);
 	
-	void deleteOrderById(Integer id);
+	void deleteOrderById(Long id);
 }
