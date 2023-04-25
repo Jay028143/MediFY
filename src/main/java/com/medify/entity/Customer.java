@@ -21,21 +21,39 @@ public class Customer {
 	@Column(name = "first_name")
 	private String firstName;
 
+	@Column(name = "middle_name")
+	private String middleName;
+
+	@Column(name = "gender")
+	private String gender;
+
 	@Column(name = "last_name")
 	private String lastName;
 
-	@Column(name = "address")
-	private String address;
+	@Column(name = "house_no")
+	private String houseNo;
 
-	@Column(name = "postCode")
+	@Column(name = "streetName")
+	private String streetName;
+
+	@Column(name = "state")
+	private String state;
+
+	@Column(name = "country")
+	private String country;
+
+	@Column(name = "city")
+	private String city;
+
+	@Column(name = "post_code")
 	private String postCode;
-	
+
 	@Column(name = "nhs_number")
 	private String nhsNumber;
-	
+
 	@Column(name = "email")
 	private String email;
-	
+
 	@Column(name = "mobile_number")
 	private String mobileNumber;
 
@@ -44,15 +62,15 @@ public class Customer {
 
 	@Column(name = "store_id")
 	private int storeId;
-	
+
 	@Column(name = "user_id")
 	private int userId;
 
 	@Column(name = "created_at")
-	private Date createdAt;
+	private String createdAt;
 
 	@Column(name = "updated_at")
-	private Date updatedAt;
+	private String updatedAt;
 
 	public int getCustomerId() {
 		return customerId;
@@ -77,15 +95,6 @@ public class Customer {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
 
 	public String getPostCode() {
 		return postCode;
@@ -143,22 +152,76 @@ public class Customer {
 		this.userId = userId;
 	}
 
-	public Date getCreatedAt() {
+	public String getMiddleName() {
+		return middleName;
+	}
+
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getHouseNo() {
+		return houseNo;
+	}
+
+	public void setHouseNo(String houseNo) {
+		this.houseNo = houseNo;
+	}
+
+	public String getStreetName() {
+		return streetName;
+	}
+
+	public void setStreetName(String streetName) {
+		this.streetName = streetName;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
 	}
 
-	public Date getUpdatedAt() {
+	public String getUpdatedAt() {
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(Date updatedAt) {
+	public void setUpdatedAt(String updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	
-	
 
 }
