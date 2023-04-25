@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.medify.entity.Store;
 import com.medify.service.StoreService;
 
-
+@CrossOrigin(origins="http://localhost:3000/")
 @RestController
 @RequestMapping("/store")
 public class StoreController {
@@ -28,6 +29,11 @@ public class StoreController {
     @GetMapping
     public List<Store> getStore() {
         return storeService.fetchAllStores();
+    }
+    
+    @GetMapping("/getStoreByUserId/{userId}")
+    public List<Store> getStoreByUserId(@PathVariable Long userId) {
+        return storeService.fetchAllStoresByAdminId(userId);
     }
 
     @GetMapping("/{storeId}")

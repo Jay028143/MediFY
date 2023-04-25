@@ -1,7 +1,5 @@
 package com.medify.entity;
 
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,10 +32,10 @@ public class Store {
 	private String mobileNumber;
 
 	@Column(name = "created_at")
-	private Date createdAt;
+	private String createdAt;
 
 	@Column(name = "updated_at")
-	private Date updatedAt;
+	private String updatedAt;
 
 
 	public String getStoreName() {
@@ -56,19 +54,19 @@ public class Store {
 		this.postCode = postCode;
 	}
 
-	public Date getCreatedAt() {
+	
+	public String getCreatedAt() {
 		return createdAt;
 	}
-
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
 	}
 
-	public Date getUpdatedAt() {
+	public String getUpdatedAt() {
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(Date updatedAt) {
+	public void setUpdatedAt(String updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 

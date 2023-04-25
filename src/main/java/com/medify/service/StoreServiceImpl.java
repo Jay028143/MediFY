@@ -45,4 +45,9 @@ public class StoreServiceImpl implements StoreService {
 		 storeRepository.deleteById(id);
 	}
 
+	@Override
+	public List<Store> fetchAllStoresByAdminId(Long adminId) {
+		return storeRepository.findByAdminId(adminId);
+	}
+
 }

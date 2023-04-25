@@ -11,6 +11,8 @@ public interface StoreService {
 	
 	List<Store> fetchAllStores();
 	
+	List<Store> fetchAllStoresByAdminId(Long id);
+	
 	Store getStoreById(Long id);
 	
 	Store updateStoreById(Long id,Store store);
