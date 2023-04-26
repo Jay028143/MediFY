@@ -31,7 +31,7 @@ public class Medicine {
 	private String description;
 
 	@Column(name = "id_check")
-	private double idCheck;
+	private String idCheck;
 
 	@Column(name = "store_id")
 	private Long storeId;
@@ -47,12 +47,15 @@ public class Medicine {
 
 	@Column(name = "expiry_date")
 	private Date expiryDate;
+	
+	@Column(name = "quantity")
+	private Long quantity;
 
 	@Column(name = "created_at")
-	private Date createdAt;
+	private String createdAt;
 
 	@Column(name = "updated_at")
-	private Date updatedAt;
+	private String updatedAt;
 
 	public Long getMedicineId() {
 		return medicineId;
@@ -94,11 +97,12 @@ public class Medicine {
 		this.description = description;
 	}
 
-	public double getIdCheck() {
+
+	public String getIdCheck() {
 		return idCheck;
 	}
 
-	public void setIdCheck(double idCheck) {
+	public void setIdCheck(String idCheck) {
 		this.idCheck = idCheck;
 	}
 
@@ -142,22 +146,27 @@ public class Medicine {
 		this.expiryDate = expiryDate;
 	}
 
-	public Date getCreatedAt() {
+	public Long getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Long quantity) {
+		this.quantity = quantity;
+	}
+
+	public String getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
 	}
 
-	public Date getUpdatedAt() {
+	public String getUpdatedAt() {
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(Date updatedAt) {
+	public void setUpdatedAt(String updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-
-	
-
 }
