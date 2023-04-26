@@ -86,13 +86,6 @@ public class User {
 		this.mobileNumber = mobileNumber;
 	}
 
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
 
 	public String getPostCode() {
 		return postCode;
@@ -100,22 +93,6 @@ public class User {
 
 	public void setPostCode(String postCode) {
 		this.postCode = postCode;
-	}
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
 	}
 
 	public User(String userName, String email, String password) {
@@ -137,10 +114,42 @@ public class User {
 		this.email = email;
 		this.niNumber=niNumber;
 		this.mobileNumber = mobileNumber;
-		this.address = address;
+		//this.address = address;
 		this.dateOfBirth=dateOfBirth;
 		this.dateOfJoining=dateOfJoining;
 		this.postCode = postCode;
+		//this.createdAt = createdAt;
+		//this.updatedAt = updatedAt;
+	}
+	
+	
+
+	public User( @NotBlank @Size(max = 20) String userName, @NotBlank @Size(max = 120) String password,
+			String firstName, String lastName, String middleName, String gender, String storeId,
+			@NotBlank @Size(max = 50) @Email String email, String niNumber, String mobileNumber, String houseNo,
+			String streetName, String state, String country, String city, String postCode, Date dateOfBirth,
+			Date dateOfJoining, String createdAt, String updatedAt) {
+		super();
+		
+		this.userName = userName;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.middleName = middleName;
+		this.gender = gender;
+		//this.roles = roles;
+		this.storeId = storeId;
+		this.email = email;
+		this.niNumber = niNumber;
+		this.mobileNumber = mobileNumber;
+		this.houseNo = houseNo;
+		this.streetName = streetName;
+		this.state = state;
+		this.country = country;
+		this.city = city;
+		this.postCode = postCode;
+		this.dateOfBirth = dateOfBirth;
+		this.dateOfJoining = dateOfJoining;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
@@ -168,6 +177,82 @@ public class User {
 	public void setDateOfJoining(Date dateOfJoining) {
 		this.dateOfJoining = dateOfJoining;
 	}
+	
+	
+
+	public String getHouseNo() {
+		return houseNo;
+	}
+
+	public void setHouseNo(String houseNo) {
+		this.houseNo = houseNo;
+	}
+
+	public String getStreetName() {
+		return streetName;
+	}
+
+	public void setStreetName(String streetName) {
+		this.streetName = streetName;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public String getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(String updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public String getMiddleName() {
+		return middleName;
+	}
+
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -193,6 +278,13 @@ public class User {
 
 	@Column(name = "last_name")
 	private String lastName;
+	
+	@Column(name = "middle_name")
+	private String middleName;
+
+	
+	@Column(name = "gender")
+	private String gender;
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -213,8 +305,21 @@ public class User {
 	@Column(name = "mobile_number")
 	private String mobileNumber;
 
-	@Column(name = "address")
-	private String address;
+	@Column(name = "house_no")
+	private String houseNo;
+
+	@Column(name = "streetName")
+	private String streetName;
+
+	@Column(name = "state")
+	private String state;
+
+	@Column(name = "country")
+	private String country;
+
+	@Column(name = "city")
+	private String city;
+
 
 	@Column(name = "postCode")
 	private String postCode;
@@ -226,8 +331,9 @@ public class User {
 	private Date dateOfJoining;
 
 	@Column(name = "created_at")
-	private Date createdAt;
+	private String createdAt;
 
 	@Column(name = "updated_at")
-	private Date updatedAt;
+	private String updatedAt;
+	
 }

@@ -30,8 +30,20 @@ public class RegisterRequest {
 	private String storeId;
 
 	private String mobileNumber;
+	
+	private String middleName;
+	
+	private String gender;
 
-	private String address;
+	private String houseNo;
+
+	private String streetName;
+
+	private String state;
+
+	private String country;
+
+	private String city;
 
 	private String niNumber;
 
@@ -41,9 +53,9 @@ public class RegisterRequest {
 
 	private Date dateOfJoining;
 
-	private Date createdAt;
+	private String createdAt;
 
-	private Date updatedAt;
+	private String updatedAt;
 
 	public String getEmail() {
 		return email;
@@ -101,12 +113,77 @@ public class RegisterRequest {
 		this.mobileNumber = mobileNumber;
 	}
 
-	public String getAddress() {
-		return address;
+
+	public String getMiddleName() {
+		return middleName;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getHouseNo() {
+		return houseNo;
+	}
+
+	public void setHouseNo(String houseNo) {
+		this.houseNo = houseNo;
+	}
+
+	public String getStreetName() {
+		return streetName;
+	}
+
+	public void setStreetName(String streetName) {
+		this.streetName = streetName;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public String getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(String updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
 	public String getNiNumber() {
@@ -139,22 +216,6 @@ public class RegisterRequest {
 
 	public void setPostCode(String postCode) {
 		this.postCode = postCode;
-	}
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
 	}
 
 	public String getUsername() {
