@@ -22,8 +22,20 @@ public class Store {
 	@Column(name = "admin_id")
 	private Long adminId;
 
-	@Column(name = "address")
-	private String address;
+	@Column(name = "house_no")
+	private String houseNo;
+
+	@Column(name = "streetName")
+	private String streetName;
+
+	@Column(name = "state")
+	private String state;
+
+	@Column(name = "country")
+	private String country;
+
+	@Column(name = "city")
+	private String city;
 
 	@Column(name = "post_code")
 	private String postCode;
@@ -86,20 +98,52 @@ public class Store {
 		this.adminId = adminId;
 	}
 
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
 	public String getMobileNumber() {
 		return mobileNumber;
 	}
 
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
+	}
+
+	public String getHouseNo() {
+		return houseNo;
+	}
+
+	public void setHouseNo(String houseNo) {
+		this.houseNo = houseNo;
+	}
+
+	public String getStreetName() {
+		return streetName;
+	}
+
+	public void setStreetName(String streetName) {
+		this.streetName = streetName;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 	
 	
