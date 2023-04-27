@@ -48,6 +48,12 @@ public class UserServiceImpl implements UserService {
 	public void deleteUserById(Long id) {
 		userRepository.deleteById(id);
 	}
+
+	@Override
+	public List<User> fetchAllUsersByStoreId(String storeId) {
+		// TODO Auto-generated method stub
+		 return userRepository.findByStoreId(storeId);
+	}
 	
 
 }

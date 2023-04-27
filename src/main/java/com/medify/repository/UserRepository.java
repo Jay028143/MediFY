@@ -1,5 +1,6 @@
 package com.medify.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,5 +14,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	  Boolean existsByUserName(String userName);
 
 	  Boolean existsByEmail(String email);
+	  
+	  List<User> findByStoreId(String storeId);
 
 }

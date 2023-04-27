@@ -31,6 +31,11 @@ public class UserController {
     public List<User> getUser() {
         return userService.fetchAllUsers();
     }
+    
+    @GetMapping("/getUserByStoreId/{storeId}")
+    public List<User> getUserByStoreId(@PathVariable String storeId) {
+        return userService.fetchAllUsersByStoreId(storeId);
+    }
 
     @GetMapping("/{userId}")
     public User getUser(@PathVariable Long userId) {
