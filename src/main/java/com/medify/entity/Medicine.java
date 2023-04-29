@@ -1,14 +1,25 @@
 package com.medify.entity;
 
-import java.sql.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
+
+
+/**
+ * @author p028143m
+ *
+ */
 @Table(name = "medicines")
 @Entity
 public class Medicine {
@@ -18,7 +29,7 @@ public class Medicine {
 	@Column(name = "medicine_id")
 	private Long medicineId;
 	
-	@Column(name = "medicine_Code")
+	@Column(name = "medicine_code")
 	private String medicineCode;
 
 	@Column(name = "medicine_name")
@@ -44,18 +55,19 @@ public class Medicine {
 
 	@Column(name = "user_id")
 	private Long userId;
-
-	@Column(name = "expiry_date")
-	private Date expiryDate;
 	
-	@Column(name = "quantity")
-	private Long quantity;
 
 	@Column(name = "created_at")
 	private String createdAt;
 
 	@Column(name = "updated_at")
 	private String updatedAt;
+	
+	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "medicine", cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, fetch= FetchType.LAZY)
+	@JoinColumn(name = "medicine_id",referencedColumnName="medicine_id")
+	
+	private List<Stock> stock;
 
 	public Long getMedicineId() {
 		return medicineId;
@@ -138,22 +150,6 @@ public class Medicine {
 		this.userId = userId;
 	}
 
-	public Date getExpiryDate() {
-		return expiryDate;
-	}
-
-	public void setExpiryDate(Date expiryDate) {
-		this.expiryDate = expiryDate;
-	}
-
-	public Long getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(Long quantity) {
-		this.quantity = quantity;
-	}
-
 	public String getCreatedAt() {
 		return createdAt;
 	}
@@ -169,4 +165,32 @@ public class Medicine {
 	public void setUpdatedAt(String updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+
+	public List<Stock> getStock() {
+		return stock;
+	}
+
+	public void setStock(List<Stock> stock) {
+		this.stock = stock;
+	}
+
+	@Override
+	public String toString() {
+		return "Medicine [medicineId=" + medicineId + ", medicineCode=" + medicineCode + ", medicineName="
+				+ medicineName + ", medicinePrice=" + medicinePrice + ", description=" + description + ", idCheck="
+				+ idCheck + ", storeId=" + storeId + ", availableStock=" + availableStock + ", totalStock=" + totalStock
+				+ ", userId=" + userId + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", stock=" + stock
+				+ ", getMedicineId()=" + getMedicineId() + ", getMedicineCode()=" + getMedicineCode()
+				+ ", getMedicineName()=" + getMedicineName() + ", getMedicinePrice()=" + getMedicinePrice()
+				+ ", getDescription()=" + getDescription() + ", getIdCheck()=" + getIdCheck() + ", getStoreId()="
+				+ getStoreId() + ", getAvailableStock()=" + getAvailableStock() + ", getTotalStock()=" + getTotalStock()
+				+ ", getUserId()=" + getUserId() + ", getCreatedAt()=" + getCreatedAt() + ", getUpdatedAt()="
+				+ getUpdatedAt() + ", getStock()=" + getStock() + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
+	}
+
+
+	
+
+	
 }

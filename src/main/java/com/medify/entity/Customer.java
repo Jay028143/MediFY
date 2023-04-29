@@ -48,9 +48,6 @@ public class Customer {
 	@Column(name = "post_code")
 	private String postCode;
 
-	@Column(name = "nhs_number")
-	private String nhsNumber;
-
 	@Column(name = "email")
 	private String email;
 
@@ -102,14 +99,6 @@ public class Customer {
 
 	public void setPostCode(String postCode) {
 		this.postCode = postCode;
-	}
-
-	public String getNhsNumber() {
-		return nhsNumber;
-	}
-
-	public void setNhsNumber(String nhsNumber) {
-		this.nhsNumber = nhsNumber;
 	}
 
 	public String getEmail() {

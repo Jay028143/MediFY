@@ -38,6 +38,7 @@ public class MedicineController {
 
     @PostMapping
     public ResponseEntity<Medicine> createMedicine(@RequestBody Medicine medicine) {
+    	System.err.println("medicine..."+medicine.toString());
         Medicine savedMedicine = medicineService.saveMedicine(medicine);
         return ResponseEntity.ok(savedMedicine);
     }

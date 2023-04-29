@@ -112,7 +112,7 @@ public class User {
 		this.lastName = lastName;
 		this.storeId = storeId;
 		this.email = email;
-		this.niNumber=niNumber;
+		//this.niNumber=niNumber;
 		this.mobileNumber = mobileNumber;
 		//this.address = address;
 		this.dateOfBirth=dateOfBirth;
@@ -126,7 +126,7 @@ public class User {
 
 	public User( @NotBlank @Size(max = 20) String userName, @NotBlank @Size(max = 120) String password,
 			String firstName, String lastName, String middleName, String gender, String storeId,
-			@NotBlank @Size(max = 50) @Email String email, String niNumber, String mobileNumber, String houseNo,
+			@NotBlank @Size(max = 50) @Email String email, String mobileNumber, String houseNo,
 			String streetName, String state, String country, String city, String postCode, Date dateOfBirth,
 			Date dateOfJoining, String createdAt, String updatedAt) {
 		super();
@@ -140,7 +140,7 @@ public class User {
 		//this.roles = roles;
 		this.storeId = storeId;
 		this.email = email;
-		this.niNumber = niNumber;
+		//this.niNumber = niNumber;
 		this.mobileNumber = mobileNumber;
 		this.houseNo = houseNo;
 		this.streetName = streetName;
@@ -152,14 +152,6 @@ public class User {
 		this.dateOfJoining = dateOfJoining;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
-	}
-
-	public String getNiNumber() {
-		return niNumber;
-	}
-
-	public void setNiNumber(String niNumber) {
-		this.niNumber = niNumber;
 	}
 
 	public Date getDateOfBirth() {
@@ -177,8 +169,7 @@ public class User {
 	public void setDateOfJoining(Date dateOfJoining) {
 		this.dateOfJoining = dateOfJoining;
 	}
-	
-	
+		
 
 	public String getHouseNo() {
 		return houseNo;
@@ -298,9 +289,6 @@ public class User {
 	@Size(max = 50)
 	@Email
 	private String email;
-	
-	@Column(name = "ni_number")
-	private String niNumber;
 
 	@Column(name = "mobile_number")
 	private String mobileNumber;

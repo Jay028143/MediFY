@@ -17,6 +17,24 @@ public class MedicineServiceImpl implements MedicineService {
 	
 	@Override
 	public Medicine saveMedicine(Medicine product) {
+		
+		Optional<Medicine> optional=productRepository.findByStoreIdAndMedicineCode(product.getStoreId(), product.getMedicineCode());
+		
+		if(optional.isPresent())
+		{
+			Medicine medicine=optional.get();
+			product.setMedicineId(medicine.getMedicineId());
+			
+			long totalstock=medicine.getTotalStock()+product.getStock().get(0).getQuantity();
+			product.setTotalStock(totalstock);
+			System.err.println("sss..."+product.getStock());
+			product.setStock(product.getStock());
+		}
+		else
+		{
+			long totalstock=product.getStock().get(0).getQuantity();
+			product.setTotalStock(totalstock);
+		}
 		return productRepository.save(product);
 	}
 

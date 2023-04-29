@@ -77,11 +77,11 @@ public class AuthController {
   @PostMapping("/register")
   public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterRequest registerRequest) {
     if (userRepository.existsByUserName(registerRequest.getUsername())) {
-      return ResponseEntity.badRequest().body(new MessageResponse("Error: Username is already taken!"));
+      return ResponseEntity.ok().body(new MessageResponse("Error: Username is already taken!"));
     }
 
     if (userRepository.existsByEmail(registerRequest.getEmail())) {
-      return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
+      return ResponseEntity.ok().body(new MessageResponse("Error: Email is already in use!"));
     }
 
     
@@ -89,7 +89,7 @@ public class AuthController {
             encoder.encode(registerRequest.getPassword()), registerRequest.getFirstName(), 
             registerRequest.getLastName(),registerRequest.getMiddleName(),
             registerRequest.getGender(),
-            registerRequest.getStoreId(), registerRequest.getEmail(),registerRequest.getNiNumber(), registerRequest.getMobileNumber(),
+            registerRequest.getStoreId(), registerRequest.getEmail(), registerRequest.getMobileNumber(),
             registerRequest.getHouseNo(),registerRequest.getStreetName(),registerRequest.getState(),registerRequest.getCountry(),
             registerRequest.getCity(),
             registerRequest.getPostCode(),registerRequest.getDateOfBirth(),registerRequest.getDateOfJoining(),registerRequest.getCreatedAt()
