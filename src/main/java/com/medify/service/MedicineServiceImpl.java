@@ -15,6 +15,7 @@ public class MedicineServiceImpl implements MedicineService {
 	@Autowired
 	private MedicineRepository productRepository;
 	
+	
 	@Override
 	public Medicine saveMedicine(Medicine product) {
 		
@@ -27,13 +28,36 @@ public class MedicineServiceImpl implements MedicineService {
 			
 			long totalstock=medicine.getTotalStock()+product.getStock().get(0).getQuantity();
 			product.setTotalStock(totalstock);
+			
+			System.err.println("available.."+totalstock);
+			
+			System.err.println("available.."+medicine.getAvailableStock());
+			System.err.println("total.."+medicine.getTotalStock());
+			if(medicine.getTotalStock()!=medicine.getAvailableStock())
+			{
+				//100-
+				product.setAvailableStock((totalstock+medicine.getAvailableStock()));
+				
+			}else
+			{
+				product.setAvailableStock(totalstock);
+				
+			}
 			System.err.println("sss..."+product.getStock());
 			product.setStock(product.getStock());
+			product.getStock().get(0).setMedicine(product);
+			
 		}
 		else
 		{
+			//1 50 50  
+			//    25
+			//100
 			long totalstock=product.getStock().get(0).getQuantity();
 			product.setTotalStock(totalstock);
+			product.setAvailableStock(totalstock);
+			product.getStock().get(0).setMedicine(product);
+			
 		}
 		return productRepository.save(product);
 	}

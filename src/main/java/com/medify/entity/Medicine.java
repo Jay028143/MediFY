@@ -63,10 +63,8 @@ public class Medicine {
 	@Column(name = "updated_at")
 	private String updatedAt;
 	
-	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "medicine", cascade = CascadeType.ALL)
 	@OneToMany(cascade = CascadeType.ALL, fetch= FetchType.LAZY)
-	@JoinColumn(name = "medicine_id",referencedColumnName="medicine_id")
-	
+	@JoinColumn(name = "medicine_id",referencedColumnName="medicine_id",updatable = false)
 	private List<Stock> stock;
 
 	public Long getMedicineId() {
