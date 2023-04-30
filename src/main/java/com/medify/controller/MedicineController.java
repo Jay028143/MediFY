@@ -36,6 +36,12 @@ public class MedicineController {
         return medicineService.getMedicineById(medicineId);
     }
 
+    @GetMapping("/getMedicinesByStoreId/{storeId}")
+    public List<Medicine> getUserByStoreId(@PathVariable Long storeId) {
+        return medicineService.fetchAllMedicinesByStoreId(storeId);
+    }
+
+    
     @PostMapping
     public ResponseEntity<Medicine> createMedicine(@RequestBody Medicine medicine) {
     	System.err.println("medicine..."+medicine.toString());

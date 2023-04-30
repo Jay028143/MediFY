@@ -45,8 +45,6 @@ public class RegisterRequest {
 
 	private String city;
 
-	private String niNumber;
-
 	private String postCode;
 
 	private Date dateOfBirth;
@@ -184,15 +182,7 @@ public class RegisterRequest {
 
 	public void setUpdatedAt(String updatedAt) {
 		this.updatedAt = updatedAt;
-	}
-
-	public String getNiNumber() {
-		return niNumber;
-	}
-
-	public void setNiNumber(String niNumber) {
-		this.niNumber = niNumber;
-	}
+	} 
 
 	public Date getDateOfBirth() {
 		return dateOfBirth;

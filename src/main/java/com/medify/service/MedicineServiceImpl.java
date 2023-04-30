@@ -87,4 +87,10 @@ public class MedicineServiceImpl implements MedicineService {
 		 productRepository.deleteById(id);
 	}
 
+	@Override
+	public List<Medicine> fetchAllMedicinesByStoreId(Long storeId) {
+		// TODO Auto-generated method stub
+		  return productRepository.findByStoreId(storeId);
+	}
+
 }

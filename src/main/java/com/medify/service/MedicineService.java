@@ -16,4 +16,6 @@ public interface MedicineService {
 	Medicine updateMedicineById(Long id,Medicine medicine);
 	
 	void deleteMedicineById(Long id);
+
+	List<Medicine> fetchAllMedicinesByStoreId(Long storeId);
 }
