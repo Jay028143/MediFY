@@ -11,7 +11,10 @@ import com.medify.entity.Customer;
 
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 	
-	@Query(value= "select * from customers where store_id in :ids and date_Of_birth =:dob",nativeQuery = true )
-	List<Customer> findByStoreIdsAndDateOfBirth(@Param("ids") List<Long> storeIds,@Param("dob") Date dateOfBirth);
+	@Query(value= "select * from customers where store_id in :storeIds and date_Of_birth =:dob",nativeQuery = true )
+	List<Customer> findByStoreIdsAndDateOfBirth(@Param("storeIds") List<Long> storeIds,@Param("dob") Date dateOfBirth);
+
+	@Query(value= "select * from customers where store_id in :storeIds ",nativeQuery = true )
+	List<Customer> findByStoreIds(@Param("storeIds")List<Long> ids);
 	
 }

@@ -19,4 +19,6 @@ public interface CustomerService {
 	void deleteCustomerById(Long id);
 
 	List<Customer> getCustomerByDateOfBirth(Date dateofBirth, Long storeId);
+
+	List<Customer> getCustomerByStoreId(Long storeId);
 }

@@ -48,9 +48,6 @@ public class Customer {
 	@Column(name = "post_code")
 	private String postCode;
 
-	@Column(name = "email")
-	private String email;
-
 	@Column(name = "mobile_number")
 	private String mobileNumber;
 
@@ -100,14 +97,6 @@ public class Customer {
 
 	public void setPostCode(String postCode) {
 		this.postCode = postCode;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getMobileNumber() {

@@ -57,4 +57,10 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerRepository.findByStoreIdsAndDateOfBirth(storeIds,dateofBirth);
 	}
 
+	@Override
+	public List<Customer> getCustomerByStoreId(Long storeId) {
+		List<Long> storeIds=storeRepository.getAllStoreIds(storeId);
+		return customerRepository.findByStoreIds(storeIds);
+	}
+
 }

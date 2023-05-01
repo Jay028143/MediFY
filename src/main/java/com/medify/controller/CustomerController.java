@@ -39,6 +39,12 @@ public class CustomerController {
         return customerService.getCustomerById(customerId);
     }
     
+    @GetMapping("/getCustomerByStoreId/{storeId}")
+    public List<Customer> getCustomerByStoreId(@PathVariable Long storeId ){
+    	
+        return customerService.getCustomerByStoreId(storeId);
+    }
+    
     @GetMapping("/getCustomerByDateOfBirth/{storeId}/{dateofBirth}")
     public List<Customer> getCustomerByDateOfBirth(@PathVariable String dateofBirth ,@PathVariable Long storeId) throws ParseException {
     	
@@ -54,7 +60,7 @@ public class CustomerController {
 
     @PutMapping("/{customerId}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable Long customerId, @RequestBody Customer customer) {
-        Customer currentCustomer = customerService.updateCustomerById(null, customer);
+        Customer currentCustomer = customerService.updateCustomerById(customerId, customer);
         return ResponseEntity.ok(currentCustomer);
     }
 
