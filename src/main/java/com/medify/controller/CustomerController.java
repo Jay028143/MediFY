@@ -1,6 +1,9 @@
 package com.medify.controller;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +37,13 @@ public class CustomerController {
     @GetMapping("/{customerId}")
     public Customer getCustomer(@PathVariable Long customerId) {
         return customerService.getCustomerById(customerId);
+    }
+    
+    @GetMapping("/getCustomerByDateOfBirth/{storeId}/{dateofBirth}")
+    public List<Customer> getCustomerByDateOfBirth(@PathVariable String dateofBirth ,@PathVariable Long storeId) throws ParseException {
+    	
+    	Date dob=new SimpleDateFormat("yyyy-MM-dd").parse(dateofBirth);
+        return customerService.getCustomerByDateOfBirth(dob,storeId);
     }
 
     @PostMapping

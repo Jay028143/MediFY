@@ -1,5 +1,6 @@
 package com.medify.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,12 +9,16 @@ import org.springframework.stereotype.Service;
 
 import com.medify.entity.Customer;
 import com.medify.repository.CustomerRepository;
+import com.medify.repository.StoreRepository;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
 	private CustomerRepository customerRepository;
+	
+	@Autowired
+	private StoreRepository storeRepository;
 	
 	@Override
 	public Customer saveCustomer(Customer customer) {
@@ -43,6 +48,13 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public void deleteCustomerById(Long id) {
 		 customerRepository.deleteById(id);
+	}
+
+	@Override
+	public List<Customer> getCustomerByDateOfBirth(Date dateofBirth, Long storeId) {
+		
+		List<Long> storeIds=storeRepository.getAllStoreIds(storeId);
+		return customerRepository.findByStoreIdsAndDateOfBirth(storeIds,dateofBirth);
 	}
 
 }

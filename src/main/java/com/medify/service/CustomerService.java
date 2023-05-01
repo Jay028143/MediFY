@@ -1,6 +1,7 @@
 package com.medify.service;
 
 
+import java.util.Date;
 import java.util.List;
 
 import com.medify.entity.Customer;
@@ -16,4 +17,6 @@ public interface CustomerService {
 	Customer updateCustomerById(Long id,Customer customer);
 	
 	void deleteCustomerById(Long id);
+
+	List<Customer> getCustomerByDateOfBirth(Date dateofBirth, Long storeId);
 }

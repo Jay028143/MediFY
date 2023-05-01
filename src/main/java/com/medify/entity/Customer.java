@@ -16,7 +16,7 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "customer_id")
-	private int customerId;
+	private Long customerId;
 
 	@Column(name = "first_name")
 	private String firstName;
@@ -58,10 +58,10 @@ public class Customer {
 	private Date dateOfBirth;
 
 	@Column(name = "store_id")
-	private int storeId;
+	private Long storeId;
 
 	@Column(name = "user_id")
-	private int userId;
+	private Long userId;
 
 	@Column(name = "created_at")
 	private String createdAt;
@@ -69,11 +69,12 @@ public class Customer {
 	@Column(name = "updated_at")
 	private String updatedAt;
 
-	public int getCustomerId() {
+
+	public Long getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(int customerId) {
+	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;
 	}
 
@@ -125,19 +126,20 @@ public class Customer {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public int getStoreId() {
+
+	public Long getStoreId() {
 		return storeId;
 	}
 
-	public void setStoreId(int storeId) {
+	public void setStoreId(Long storeId) {
 		this.storeId = storeId;
 	}
 
-	public int getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
