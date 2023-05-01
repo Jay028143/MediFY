@@ -27,9 +27,12 @@ public class Order {
 
 	@Column(name = "customer_id")
 	private Long customerId;
+	
+	@Column(name = "customer_name")
+	private String customerName;
 
 	@Column(name = "total_price")
-	private double total_price;
+	private double totalPrice;
 
 	@Column(name = "store_id")
 	private Long storeId;
@@ -68,12 +71,12 @@ public class Order {
 		this.customerId = customerId;
 	}
 
-	public double getTotal_price() {
-		return total_price;
+	public double getTotalPrice() {
+		return totalPrice;
 	}
 
-	public void setTotal_price(double total_price) {
-		this.total_price = total_price;
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 
 	public Long getStoreId() {
@@ -108,6 +111,12 @@ public class Order {
 		this.orderDetail = orderDetail;
 	}
 
-	
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
 
 }

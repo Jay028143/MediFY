@@ -36,6 +36,11 @@ public class OrderController {
         return orderService.getOrderById(orderId);
     }
 
+    @GetMapping("/getOrdersByStoreId/{storeId}")
+    public List<Order> getOrderByStoreId(@PathVariable Long storeId) {
+        return orderService.fetchAllOrdersByStoreId(storeId);
+    }
+    
     @PostMapping
     public ResponseEntity<Order> createOrder(@RequestBody Order order) {
         Order savedOrder = orderService.saveOrder(order);

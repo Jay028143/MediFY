@@ -16,4 +16,6 @@ public interface OrderService {
 	Order updateOrderById(Long id,Order order);
 	
 	void deleteOrderById(Long id);
+
+	List<Order> fetchAllOrdersByStoreId(Long storeId);
 }

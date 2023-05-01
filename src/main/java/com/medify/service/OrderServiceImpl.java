@@ -45,4 +45,10 @@ public class OrderServiceImpl implements OrderService {
 		 orderRepository.deleteById(id);
 	}
 
+	@Override
+	public List<Order> fetchAllOrdersByStoreId(Long storeId) {
+		// TODO Auto-generated method stub
+		return orderRepository.findByStoreId(storeId);
+	}
+
 }
