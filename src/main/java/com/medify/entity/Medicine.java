@@ -56,6 +56,9 @@ public class Medicine {
 	@Column(name = "user_id")
 	private Long userId;
 	
+	@Column(name = "min_age")
+	private Long minAge;
+	
 
 	@Column(name = "created_at")
 	private String createdAt;
@@ -170,6 +173,15 @@ public class Medicine {
 
 	public void setStock(List<Stock> stock) {
 		this.stock = stock;
+	}
+	
+
+	public Long getMinAge() {
+		return minAge;
+	}
+
+	public void setMinAge(Long minAge) {
+		this.minAge = minAge;
 	}
 
 	@Override
