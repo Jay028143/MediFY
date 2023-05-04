@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.medify.entity.Medicine;
+import com.medify.entity.Store;
 import com.medify.service.MedicineService;
 
 @CrossOrigin(origins="http://localhost:3000/")
@@ -41,6 +42,12 @@ public class MedicineController {
         return medicineService.fetchAllMedicinesByStoreId(storeId);
     }
 
+    @GetMapping("/getMedicineAvailabilityAtStore/{storeId}/{medicineCode}")
+    public List<Store> getMedicineAvailabilityAtStore(@PathVariable Long storeId,@PathVariable String medicineCode) {
+        return medicineService.getMedicineAvailabilityAtStore(storeId,medicineCode);
+    }
+    
+    
     
     @PostMapping
     public ResponseEntity<Medicine> createMedicine(@RequestBody Medicine medicine) {

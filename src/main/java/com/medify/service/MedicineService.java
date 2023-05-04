@@ -4,6 +4,7 @@ package com.medify.service;
 import java.util.List;
 
 import com.medify.entity.Medicine;
+import com.medify.entity.Store;
 
 public interface MedicineService {
 
@@ -18,4 +19,6 @@ public interface MedicineService {
 	void deleteMedicineById(Long id);
 
 	List<Medicine> fetchAllMedicinesByStoreId(Long storeId);
+
+	List<Store> getMedicineAvailabilityAtStore(Long storeId, String medicineCode);
 }

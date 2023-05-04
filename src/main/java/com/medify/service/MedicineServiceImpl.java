@@ -2,12 +2,15 @@ package com.medify.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.medify.entity.Medicine;
+import com.medify.entity.Store;
 import com.medify.repository.MedicineRepository;
+import com.medify.repository.StoreRepository;
 
 @Service
 public class MedicineServiceImpl implements MedicineService {
@@ -15,6 +18,8 @@ public class MedicineServiceImpl implements MedicineService {
 	@Autowired
 	private MedicineRepository productRepository;
 	
+	@Autowired
+	private StoreRepository storeRepository;
 	
 	@Override
 	public Medicine saveMedicine(Medicine product) {
@@ -91,6 +96,14 @@ public class MedicineServiceImpl implements MedicineService {
 	public List<Medicine> fetchAllMedicinesByStoreId(Long storeId) {
 		// TODO Auto-generated method stub
 		  return productRepository.findByStoreId(storeId);
+	}
+
+	@Override
+	public List<Store> getMedicineAvailabilityAtStore(Long storeId, String medicineCode) {
+		List<Store> stores=storeRepository.getAllStore(storeId);
+		List<Long> storeIds=stores.stream().map(Store::getStoreId).collect(Collectors.toList());
+		List<Long> availble= productRepository.findMedicineAvailabilityAtStore(storeIds, medicineCode);
+		return  stores;
 	}
 
 }
