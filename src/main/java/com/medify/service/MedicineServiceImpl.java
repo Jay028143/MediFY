@@ -1,5 +1,6 @@
 package com.medify.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -17,66 +18,61 @@ public class MedicineServiceImpl implements MedicineService {
 
 	@Autowired
 	private MedicineRepository productRepository;
-	
+
 	@Autowired
 	private StoreRepository storeRepository;
-	
+
 	@Override
 	public Medicine saveMedicine(Medicine product) {
-		
-		Optional<Medicine> optional=productRepository.findByStoreIdAndMedicineCode(product.getStoreId(), product.getMedicineCode());
-		
-		if(optional.isPresent())
-		{
-			Medicine medicine=optional.get();
+
+		Optional<Medicine> optional = productRepository.findByStoreIdAndMedicineCode(product.getStoreId(),
+				product.getMedicineCode());
+
+		if (optional.isPresent()) {
+			Medicine medicine = optional.get();
 			product.setMedicineId(medicine.getMedicineId());
-			
-			long totalstock=medicine.getTotalStock()+product.getStock().get(0).getQuantity();
+
+			long totalstock = medicine.getTotalStock() + product.getStock().get(0).getQuantity();
 			product.setTotalStock(totalstock);
-			
-			System.err.println("available.."+totalstock);
-			
-			System.err.println("available.."+medicine.getAvailableStock());
-			System.err.println("total.."+medicine.getTotalStock());
-			if(medicine.getTotalStock()!=medicine.getAvailableStock())
-			{
-				//100-
-				product.setAvailableStock((totalstock+medicine.getAvailableStock()));
-				
-			}else
-			{
+
+			System.err.println("available.." + totalstock);
+
+			System.err.println("available.." + medicine.getAvailableStock());
+			System.err.println("total.." + medicine.getTotalStock());
+			if (medicine.getTotalStock() != medicine.getAvailableStock()) {
+				// 100-
+				product.setAvailableStock((totalstock + medicine.getAvailableStock()));
+
+			} else {
 				product.setAvailableStock(totalstock);
-				
+
 			}
-			System.err.println("sss..."+product.getStock());
+			System.err.println("sss..." + product.getStock());
 			product.setStock(product.getStock());
 			product.getStock().get(0).setMedicine(product);
-			
-		}
-		else
-		{
-			//1 50 50  
-			//    25
-			//100
-			long totalstock=product.getStock().get(0).getQuantity();
+
+		} else {
+			// 1 50 50
+			// 25
+			// 100
+			long totalstock = product.getStock().get(0).getQuantity();
 			product.setTotalStock(totalstock);
 			product.setAvailableStock(totalstock);
 			product.getStock().get(0).setMedicine(product);
-			
+
 		}
 		return productRepository.save(product);
 	}
 
 	@Override
-	public List<Medicine> fetchAllMedicines() {	
+	public List<Medicine> fetchAllMedicines() {
 		return productRepository.findAll();
 	}
 
 	@Override
 	public Medicine getMedicineById(Long id) {
-		Optional<Medicine> product=productRepository.findById(id);
-		if(product.isPresent())
-		{
+		Optional<Medicine> product = productRepository.findById(id);
+		if (product.isPresent()) {
 			return product.get();
 		}
 		return null;
@@ -89,21 +85,31 @@ public class MedicineServiceImpl implements MedicineService {
 
 	@Override
 	public void deleteMedicineById(Long id) {
-		 productRepository.deleteById(id);
+		productRepository.deleteById(id);
 	}
 
 	@Override
 	public List<Medicine> fetchAllMedicinesByStoreId(Long storeId) {
 		// TODO Auto-generated method stub
-		  return productRepository.findByStoreId(storeId);
+		return productRepository.findByStoreId(storeId);
 	}
 
 	@Override
 	public List<Store> getMedicineAvailabilityAtStore(Long storeId, String medicineCode) {
-		List<Store> stores=storeRepository.getAllStore(storeId);
-		List<Long> storeIds=stores.stream().map(Store::getStoreId).collect(Collectors.toList());
-		List<Long> availble= productRepository.findMedicineAvailabilityAtStore(storeIds, medicineCode);
-		return  stores;
+		List<Store> stores = storeRepository.getAllStore(storeId);
+		List<Long> storeIds = stores.stream().map(Store::getStoreId).collect(Collectors.toList());
+		List<Long> availble = productRepository.findMedicineAvailabilityAtStore(storeIds, medicineCode);
+		List<Store> availableStore = new ArrayList<>();
+		for (Long id : availble) {
+
+			for (Store store : stores) {
+				if (id == store.getStoreId()) {
+					availableStore.add(store);
+				}
+			}
+		}
+
+		return availableStore;
 	}
 
 }
