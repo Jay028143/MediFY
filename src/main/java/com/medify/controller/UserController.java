@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.medify.entity.User;
+import com.medify.security.login.payload.request.LoginRequest;
+import com.medify.security.login.payload.response.MessageResponse;
 import com.medify.service.UserService;
 
 
@@ -26,6 +29,9 @@ public class UserController {
 	
 	@Autowired
     private UserService userService;
+	
+	@Autowired
+	PasswordEncoder encoder;
 
     @GetMapping
     public List<User> getUser() {
@@ -44,9 +50,19 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
-    	System.err.println(user);
+    	
         User savedUser = userService.saveUser(user);
         return ResponseEntity.ok(savedUser);
+    }
+    
+    @PostMapping("/updatePassword")
+    public ResponseEntity<?> updatePassword(@RequestBody LoginRequest loginRequest) {
+    	
+    	String username=loginRequest.getUsername();
+    	String password=encoder.encode(loginRequest.getPassword());
+         userService.updatePassword(username,password);
+         return ResponseEntity.ok().body(new MessageResponse("Password Update Succesfully"));
+        
     }
 
     @PutMapping("/{userId}")

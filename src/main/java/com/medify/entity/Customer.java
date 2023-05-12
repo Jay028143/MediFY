@@ -56,6 +56,9 @@ public class Customer {
 
 	@Column(name = "store_id")
 	private Long storeId;
+	
+	@Column(name = "store_name")
+	private String storeName;
 
 	@Column(name = "user_id")
 	private Long userId;
@@ -204,4 +207,13 @@ public class Customer {
 		this.updatedAt = updatedAt;
 	}
 
+	public String getStoreName() {
+		return storeName;
+	}
+
+	public void setStoreName(String storeName) {
+		this.storeName = storeName;
+	}
+
+	
 }

@@ -20,7 +20,7 @@ public class RegisterRequest {
 	private Set<String> role;
 
 	@NotBlank
-	@Size(min = 6, max = 40)
+	@Size(max = 40)
 	private String password;
 
 	private String firstName;

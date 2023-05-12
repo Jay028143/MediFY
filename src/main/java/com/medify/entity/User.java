@@ -115,7 +115,6 @@ public class User {
 		//this.niNumber=niNumber;
 		this.mobileNumber = mobileNumber;
 		//this.address = address;
-		this.dateOfBirth=dateOfBirth;
 		this.dateOfJoining=dateOfJoining;
 		this.postCode = postCode;
 		//this.createdAt = createdAt;
@@ -148,19 +147,11 @@ public class User {
 		this.country = country;
 		this.city = city;
 		this.postCode = postCode;
-		this.dateOfBirth = dateOfBirth;
 		this.dateOfJoining = dateOfJoining;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
 
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
 
 	public Date getDateOfJoining() {
 		return dateOfJoining;
@@ -312,8 +303,7 @@ public class User {
 	@Column(name = "postCode")
 	private String postCode;
 	
-	@Column(name = "date_of_birth")
-	private Date dateOfBirth;
+	
 	
 	@Column(name = "date_of_joining")
 	private Date dateOfJoining;

@@ -54,6 +54,15 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		 return userRepository.findByStoreId(storeId);
 	}
+
+	@Override
+	public void updatePassword(String username , String password) {
+		// TODO Auto-generated method stub
+		System.err.println("username.."+username);
+		System.err.println("password.."+password);
+		userRepository.updatePassword(username,password);
+		
+	}
 	
 
 }

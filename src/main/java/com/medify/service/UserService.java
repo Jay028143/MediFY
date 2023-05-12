@@ -18,4 +18,6 @@ public interface UserService {
 	User updateUserById(Long id,User user);
 	
 	void deleteUserById(Long id);
+
+	void updatePassword(String userName, String password);
 }
