@@ -1,6 +1,5 @@
 package com.medify.controller;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,53 +18,50 @@ import com.medify.entity.Medicine;
 import com.medify.entity.Store;
 import com.medify.service.MedicineService;
 
-@CrossOrigin(origins="http://localhost:3000/")
+@CrossOrigin(origins = "http://localhost:3000/")
 @RestController
 @RequestMapping("/medicine")
 public class MedicineController {
 
 	@Autowired
-    private MedicineService medicineService;
+	private MedicineService medicineService;
 
-    @GetMapping
-    public List<Medicine> getMedicine() {
-        return medicineService.fetchAllMedicines();
-    }
+	@GetMapping
+	public List<Medicine> getMedicine() {
+		return medicineService.fetchAllMedicines();
+	}
 
-    @GetMapping("/{medicineId}")
-    public Medicine getMedicine(@PathVariable Long medicineId) {
-        return medicineService.getMedicineById(medicineId);
-    }
+	@GetMapping("/{medicineId}")
+	public Medicine getMedicine(@PathVariable Long medicineId) {
+		return medicineService.getMedicineById(medicineId);
+	}
 
-    @GetMapping("/getMedicinesByStoreId/{storeId}")
-    public List<Medicine> getUserByStoreId(@PathVariable Long storeId) {
-        return medicineService.fetchAllMedicinesByStoreId(storeId);
-    }
+	@GetMapping("/getMedicinesByStoreId/{storeId}")
+	public List<Medicine> getUserByStoreId(@PathVariable Long storeId) {
+		return medicineService.fetchAllMedicinesByStoreId(storeId);
+	}
 
-    @GetMapping("/getMedicineAvailabilityAtStore/{storeId}/{medicineCode}")
-    public List<Store> getMedicineAvailabilityAtStore(@PathVariable Long storeId,@PathVariable String medicineCode) {
-        return medicineService.getMedicineAvailabilityAtStore(storeId,medicineCode);
-    }
-    
-    
-    
-    @PostMapping
-    public ResponseEntity<Medicine> createMedicine(@RequestBody Medicine medicine) {
-    	System.err.println("medicine..."+medicine.toString());
-        Medicine savedMedicine = medicineService.saveMedicine(medicine);
-        return ResponseEntity.ok(savedMedicine);
-    }
+	@GetMapping("/getMedicineAvailabilityAtStore/{storeId}/{medicineCode}")
+	public List<Store> getMedicineAvailabilityAtStore(@PathVariable Long storeId, @PathVariable String medicineCode) {
+		return medicineService.getMedicineAvailabilityAtStore(storeId, medicineCode);
+	}
 
-    @PutMapping("/{medicineId}")
-    public ResponseEntity<Medicine> updateMedicine(@PathVariable Long medicineId, @RequestBody Medicine medicine) {
-        Medicine currentMedicine = medicineService.updateMedicineById(null, medicine);
-        return ResponseEntity.ok(currentMedicine);
-    }
+	@PostMapping
+	public ResponseEntity<Medicine> createMedicine(@RequestBody Medicine medicine) {
+		Medicine savedMedicine = medicineService.saveMedicine(medicine);
+		return ResponseEntity.ok(savedMedicine);
+	}
 
-    @DeleteMapping("/{medicineId}")
-    public ResponseEntity<Medicine> deleteMedicine(@PathVariable Long medicineId) {
-        medicineService.deleteMedicineById(medicineId);
-        return ResponseEntity.ok().build();
-    }
+	@PutMapping("/{medicineId}")
+	public ResponseEntity<Medicine> updateMedicine(@PathVariable Long medicineId, @RequestBody Medicine medicine) {
+		Medicine currentMedicine = medicineService.updateMedicineById(null, medicine);
+		return ResponseEntity.ok(currentMedicine);
+	}
+
+	@DeleteMapping("/{medicineId}")
+	public ResponseEntity<Medicine> deleteMedicine(@PathVariable Long medicineId) {
+		medicineService.deleteMedicineById(medicineId);
+		return ResponseEntity.ok().build();
+	}
 
 }

@@ -77,11 +77,11 @@ public class AuthController {
   @PostMapping("/register")
   public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterRequest registerRequest) {
     if (userRepository.existsByUserName(registerRequest.getUsername())) {
-      return ResponseEntity.ok().body(new MessageResponse("Error: Username is already taken!"));
+      return ResponseEntity.status(201).body(new MessageResponse("Error: Username is already taken."));
     }
 
     if (userRepository.existsByEmail(registerRequest.getEmail())) {
-      return ResponseEntity.ok().body(new MessageResponse("Error: Email is already in use!"));
+      return ResponseEntity.status(201).body(new MessageResponse("Error: Email is already in use."));
     }
 
     

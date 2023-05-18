@@ -28,6 +28,12 @@ public class OrderDetail {
 	@Column(name = "quantity")
 	private Long quantity;
 	
+	@Column(name = "medicine_adhre")
+	private String medicineAdhre;
+	
+	@Column(name = "time_of_medicine")
+	private String timeofmedicine;
+	
 	
 	@Column(name = "unit_price")
 	private Long unitPrice;
@@ -78,5 +84,23 @@ public class OrderDetail {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
+
+	public String getMedicineAdhre() {
+		return medicineAdhre;
+	}
+
+	public void setMedicineAdhre(String medicineAdhre) {
+		this.medicineAdhre = medicineAdhre;
+	}
+
+	public String getTimeofmedicine() {
+		return timeofmedicine;
+	}
+
+	public void setTimeofmedicine(String timeofmedicine) {
+		this.timeofmedicine = timeofmedicine;
+	}
+
+	
 	
 }

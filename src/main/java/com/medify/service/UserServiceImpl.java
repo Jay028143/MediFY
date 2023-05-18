@@ -4,14 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.medify.entity.User;
 import com.medify.repository.UserRepository;
-
-import javax.transaction.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -58,8 +54,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void updatePassword(String username , String password) {
 		// TODO Auto-generated method stub
-		System.err.println("username.."+username);
-		System.err.println("password.."+password);
 		userRepository.updatePassword(username,password);
 		
 	}

@@ -2,6 +2,7 @@ package com.medify.controller;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +42,11 @@ public class OrderController {
         return orderService.fetchAllOrdersByStoreId(storeId);
     }
     
+    @GetMapping("/getSalesReportByStoreId/{storeId}")
+    public Map<?, ?> getSalesReportByStoreId(@PathVariable Long storeId) {
+        return orderService.getSalesReportByStoreId(storeId);
+    }
+    
     @PostMapping
     public ResponseEntity<Order> createOrder(@RequestBody Order order) {
         Order savedOrder = orderService.saveOrder(order);
@@ -58,5 +64,9 @@ public class OrderController {
         orderService.deleteOrderById(orderId);
         return ResponseEntity.ok().build();
     }
+    
+    
+    
+    
 
 }
