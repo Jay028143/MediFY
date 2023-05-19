@@ -59,6 +59,9 @@ public class Customer {
 	
 	@Column(name = "store_name")
 	private String storeName;
+	
+	@Column(name = "disease")
+	private String disease;
 
 	@Column(name = "user_id")
 	private Long userId;
@@ -213,6 +216,14 @@ public class Customer {
 
 	public void setStoreName(String storeName) {
 		this.storeName = storeName;
+	}
+
+	public String getDisease() {
+		return disease;
+	}
+
+	public void setDisease(String disease) {
+		this.disease = disease;
 	}
 
 	

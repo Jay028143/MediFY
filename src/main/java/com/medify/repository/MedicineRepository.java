@@ -16,7 +16,7 @@ public interface MedicineRepository extends JpaRepository<Medicine, Long> {
 	
 	List<Medicine> findByStoreId(Long storeId);
 
-	@Query(value= "select store_id from medicines where store_id in :storeIds and available_stock>0 and medicine_code= :medicineCode",nativeQuery = true )
+	@Query(value= "select store_id from medicines where store_id in :storeIds and available_stock>10 and medicine_code= :medicineCode",nativeQuery = true )
 	List<Long> findMedicineAvailabilityAtStore(@Param("storeIds") List<Long> storeIds,@Param("medicineCode") String medicineCode);
 	
 	Optional<Medicine> findByMedicineId(Long medicineId);
